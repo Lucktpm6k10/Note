@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Note</string>
+    <!-- Menu Main -->
+    <string name="addMain">Add</string>
+    <!-- Menu Add Item -->
+    <string name="camera_item_add">Camera</string>
+    <string name="add_item_add">Add</string>
+    <string name="edit_item_add">Edit</string>
+    <!-- item recyclerview note -->
+    <string name="tv_Tittle">Tittle</string>
+    <string name="tv_Conttent">Conttent</string>
+    <string name="tv_Date">Date</string>
+    <string name="tv_Time">Time</string>
+    <!-- activity add note -->
+    <!--
+    <string name="tv_Tittle">Tittle</string>
+    <string name="tv_Conttent">Conttent</string>
+    <string name="tv_Date">Date</string>
+    <string name="tv_Time">Time</string>
+    -->
+    <string name="alram">Alram</string>
+    <string name="spinerDate1">Today</string>
+    <string name="spinerDate2">Tomorrow</string>
+    <string name="spinerDate4">Other...</string>
+    <string name="spinerDate3">Day after day</string>
+    <string name="spinerTime1">9:00</string>
+    <string name="spinerTime2">6:45</string>
+    <string name="spinerTime3">18:00</string>
+    <string name="spinerTime4">Other...</string>
+    <string name="faceBookAppID">512663395837935</string>
+    <string name="faceBookLogin">fb512663395837935</string>
+    <!--- DIALOG CAMERA -->
+    <string name="tittle_dig">Insert Picture</string>
+    <string name="choosePhoto">Choose Photo</string>
+    <string name="takePhoto">Take Photo</string>
+    <!--- DIALOG CHOOSE BACKGROUND -->
+    <string name="color">Choose Color</string>
+    <!--- DIALOG CHOOSE DATE-->
+    <string name="date">Choose Date</string>
+    <!--- DIALOG CHOOSE TIME-->
+    <string name="time">Choose Time</string>
+    <!-- Menu Add Item-->
+    <string name="menu_item_save">Save</string>
+    <string name="menu_item_new">New</string>
+    <string name="menu_item_delete">Delete</string>
+    <!-- Toast -->
+    <string name="loiLoadAnh">Có lỗi xảy ra khi load ảnh</string>
+    <string name="loiConttentEmty">Không được để trống conttent</string>
+    <string name="loiTittleEmty">Không được để trống tittle</string>
+    <string name="update">Cập nhật thành công</string>
+    <string name="delete">Xóa thành công</string>
+
+    <!-- Dialog delete note -->
+    <string name="tittleDelete">Bạn có muốn xóa không</string>
+    <string name="ok">Đồng ý</string>
+    <string name="cancel">Hủy bỏ</string>
+
+</resources>
+

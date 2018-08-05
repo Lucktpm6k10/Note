@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.vanluc.note">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_note_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_note_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/faceBookAppID"></meta-data>
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.AddNoteActivity" />
+        <activity android:name=".activity.EditNoteActivity"></activity>
+        <provider
+            android:authorities="com.facebook.app.FacebookContentProvider512663395837935"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"></provider>
+        <receiver android:name=".alarm.AlarmRecevier"></receiver>
+        <service android:name=".alarm.Music"
+            android:enabled="false"></service>
+        <service android:name=".alarm.SchedulingService"
+            android:enabled="false"></service>
+    </application>
+    
+
+</manifest>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/ln_Item"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/ln_Tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10"
+        android:orientation="horizontal">
+       <TextView
+           android:layout_marginLeft="10dp"
+           android:id="@+id/tv_Tittle"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="9"
+           style="@style/TittleText"
+           android:maxLines="1"
+           android:text="@string/tv_Tittle"
+           />
+        <ImageView
+            android:id="@+id/iv_Clock"
+            android:visibility="invisible"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_alram"/>
+    </LinearLayout>
+    <View
+        android:paddingTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/view"
+        ></View>
+    <TextView
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:minLines="3"
+        android:layout_marginLeft="10dp"
+        android:maxLines="3"
+        android:id="@+id/tv_Conttent"
+        android:text="@string/tv_Conttent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <LinearLayout
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/tv_Date"
+            style="@style/Date_Time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_Date" />
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/tv_Time"
+            style="@style/Date_Time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_Time" />
+    </LinearLayout>
+
+
+</LinearLayout>

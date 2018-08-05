@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <TextView
+        style="@style/Tittle_Dialog"
+        android:text="@string/tittle_dig"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        ></View>
+    <LinearLayout
+        android:id="@+id/ln_TakePhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10"
+        android:paddingBottom="5dp"
+        android:paddingTop="10dp">
+        <ImageView
+            android:src="@android:drawable/ic_menu_camera"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:text="@string/takePhoto"
+            style="@style/TittleText"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ln_ChoosePhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+        <ImageView
+            android:src="@android:drawable/ic_menu_crop"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:text="@string/choosePhoto"
+            style="@style/TittleText"/>
+    </LinearLayout>
+
+
+</LinearLayout>
