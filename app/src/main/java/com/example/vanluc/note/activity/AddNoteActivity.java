@@ -9,8 +9,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
-import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -44,19 +42,18 @@ import com.example.vanluc.note.ulti.NextToDate;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class AddNoteActivity extends AppCompatActivity {
-    TextView tv_NowDate, tv_NowTime, tv_Arlam;
-    EditText et_Tittle, et_Conttent;
-    LinearLayout ln_AddNote;
-    Spinner spn_Date, spn_Time;
-    ImageButton ib_CloseClock;
-    RecyclerView rv_ImageNote;
+    TextView tvNowDate, tvNowTime, tvArlam;
+    EditText etTittle, etConttent;
+    LinearLayout lnAddNote;
+    Spinner spnDate, spnTime;
+    ImageButton ibCloseClock;
+    RecyclerView rvImageNote;
     ImageAdapter imageAdapter;
     public static Integer idNew;
 
@@ -100,29 +97,29 @@ public class AddNoteActivity extends AppCompatActivity {
 
     //Ánh xạ
     private void initView() {
-        tv_Arlam = findViewById(R.id.tv_Arlarm);
-        ln_AddNote = findViewById(R.id.ln_AddNote);
-        tv_NowDate = findViewById(R.id.tv_NowDate);
-        tv_NowTime = findViewById(R.id.tv_NowTime);
-        et_Conttent = findViewById(R.id.et_Conttent);
-        et_Tittle = findViewById(R.id.et_Tittle);
-        spn_Date = findViewById(R.id.spn_DateClock);
-        spn_Time = findViewById(R.id.spn_TimeClock);
-        ib_CloseClock = findViewById(R.id.ib_CloseClock);
-        rv_ImageNote = findViewById(R.id.rv_ImageNote);
+        tvArlam = findViewById(R.id.tv_Arlarm);
+        lnAddNote = findViewById(R.id.ln_AddNote);
+        tvNowDate = findViewById(R.id.tv_NowDate);
+        tvNowTime = findViewById(R.id.tv_NowTime);
+        etConttent = findViewById(R.id.et_Conttent);
+        etTittle = findViewById(R.id.et_Tittle);
+        spnDate = findViewById(R.id.spn_DateClock);
+        spnTime = findViewById(R.id.spn_TimeClock);
+        ibCloseClock = findViewById(R.id.ib_CloseClock);
+        rvImageNote = findViewById(R.id.rv_ImageNote);
         setSpiner();
     }
 
 
     //Bắt sự kiện
     private void initListener() {
-        tv_Arlam.setOnClickListener(new View.OnClickListener() {
+        tvArlam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showSpinerClock();
             }
         });
-        ib_CloseClock.setOnClickListener(new View.OnClickListener() {
+        ibCloseClock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 closeSpinerClock();
@@ -132,18 +129,18 @@ public class AddNoteActivity extends AppCompatActivity {
 
     //Đóng spinner
     private void closeSpinerClock() {
-        spn_Date.setVisibility(View.INVISIBLE);
-        spn_Time.setVisibility(View.INVISIBLE);
-        ib_CloseClock.setVisibility(View.INVISIBLE);
+        spnDate.setVisibility(View.INVISIBLE);
+        spnTime.setVisibility(View.INVISIBLE);
+        ibCloseClock.setVisibility(View.INVISIBLE);
         timeClock = null;
         dateClock = null;
     }
 
     //Hiện thị spiner
     private void showSpinerClock() {
-        spn_Time.setVisibility(View.VISIBLE);
-        spn_Date.setVisibility(View.VISIBLE);
-        ib_CloseClock.setVisibility(View.VISIBLE);
+        spnTime.setVisibility(View.VISIBLE);
+        spnDate.setVisibility(View.VISIBLE);
+        ibCloseClock.setVisibility(View.VISIBLE);
         dateClock = dateNow;
         timeClock = "9:00";
     }
@@ -158,7 +155,7 @@ public class AddNoteActivity extends AppCompatActivity {
         listChooseDate.add(getResources().getString(R.string.spinerDate2));
         listChooseDate.add(getResources().getString(R.string.spinerDate3));
         listChooseDate.add(getResources().getString(R.string.spinerDate4));
-        spn_Date.setAdapter(dateAdapter);
+        spnDate.setAdapter(dateAdapter);
 
         //Xử lý spinner time
         timeAdapter = new ArrayAdapter<>(this,
@@ -168,23 +165,23 @@ public class AddNoteActivity extends AppCompatActivity {
         listChooseTime.add(getResources().getString(R.string.spinerTime2));
         listChooseTime.add(getResources().getString(R.string.spinerTime3));
         listChooseTime.add(getResources().getString(R.string.spinerTime4));
-        spn_Time.setAdapter(timeAdapter);
+        spnTime.setAdapter(timeAdapter);
 
         //Bắt sự kiện cho spinner date
-        spn_Date.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spnDate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (spn_Date.getItemAtPosition(position).toString().equals(listChooseDate.get(0)) &&
-                        spn_Date.getVisibility() == View.VISIBLE) {
+                if (spnDate.getItemAtPosition(position).toString().equals(listChooseDate.get(0)) &&
+                        spnDate.getVisibility() == View.VISIBLE) {
                     dateClock = NextToDate.changeDate(dateNow, 1);
-                } else if (spn_Date.getItemAtPosition(position).toString().equals(listChooseDate.get(1)) &&
-                        spn_Date.getVisibility() == View.VISIBLE) {
+                } else if (spnDate.getItemAtPosition(position).toString().equals(listChooseDate.get(1)) &&
+                        spnDate.getVisibility() == View.VISIBLE) {
                     dateClock = NextToDate.changeDate(dateNow, 2);
-                } else if (spn_Date.getItemAtPosition(position).toString().equals(listChooseDate.get(2)) &&
-                        spn_Date.getVisibility() == View.VISIBLE) {
+                } else if (spnDate.getItemAtPosition(position).toString().equals(listChooseDate.get(2)) &&
+                        spnDate.getVisibility() == View.VISIBLE) {
                     dateClock = NextToDate.changeDate(dateNow, 3);
-                } else if (spn_Date.getItemAtPosition(position).toString().equals(listChooseDate.get(3)) &&
-                        spn_Date.getVisibility() == View.VISIBLE) {
+                } else if (spnDate.getItemAtPosition(position).toString().equals(listChooseDate.get(3)) &&
+                        spnDate.getVisibility() == View.VISIBLE) {
                     showDateDialog();
 
                 }
@@ -197,20 +194,20 @@ public class AddNoteActivity extends AppCompatActivity {
         });
 
         //Bắt sự kiện cho spinner time
-        spn_Time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spnTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (spn_Time.getItemAtPosition(position).toString().equals(listChooseTime.get(0)) &&
-                        spn_Time.getVisibility() == View.VISIBLE) {
+                if (spnTime.getItemAtPosition(position).toString().equals(listChooseTime.get(0)) &&
+                        spnTime.getVisibility() == View.VISIBLE) {
                     timeClock = getResources().getString(R.string.spinerTime1);
-                } else if (spn_Time.getItemAtPosition(position).toString().equals(listChooseTime.get(1)) &&
-                        spn_Time.getVisibility() == View.VISIBLE) {
+                } else if (spnTime.getItemAtPosition(position).toString().equals(listChooseTime.get(1)) &&
+                        spnTime.getVisibility() == View.VISIBLE) {
                     timeClock = getResources().getString(R.string.spinerTime2);
-                } else if (spn_Time.getItemAtPosition(position).toString().equals(listChooseTime.get(2)) &&
-                        spn_Time.getVisibility() == View.VISIBLE) {
+                } else if (spnTime.getItemAtPosition(position).toString().equals(listChooseTime.get(2)) &&
+                        spnTime.getVisibility() == View.VISIBLE) {
                     timeClock = getResources().getString(R.string.spinerTime3);
-                } else if (spn_Time.getItemAtPosition(position).toString().equals(listChooseTime.get(3)) &&
-                        spn_Time.getVisibility() == View.VISIBLE) {
+                } else if (spnTime.getItemAtPosition(position).toString().equals(listChooseTime.get(3)) &&
+                        spnTime.getVisibility() == View.VISIBLE) {
                     showTimeDialog();
 
                 }
@@ -269,12 +266,12 @@ public class AddNoteActivity extends AppCompatActivity {
         Date date = new Date();
         String strDateFormat = "dd/MM/yyyy";
         SimpleDateFormat nowDate = new SimpleDateFormat(strDateFormat);
-        tv_NowDate.setText(nowDate.format(date));
-        dateNow = tv_NowDate.getText().toString();
+        tvNowDate.setText(nowDate.format(date));
+        dateNow = tvNowDate.getText().toString();
         String strTimeFormat = "HH:mm";
         SimpleDateFormat nowTime = new SimpleDateFormat(strTimeFormat);
-        tv_NowTime.setText(nowTime.format(date));
-        timeNow = tv_NowTime.getText().toString();
+        tvNowTime.setText(nowTime.format(date));
+        timeNow = tvNowTime.getText().toString();
     }
 
     //Tạo icon và tittle của actionbar
@@ -370,16 +367,16 @@ public class AddNoteActivity extends AppCompatActivity {
     //Set background của item
     private void setColorBackground(int itemBackground1) {
         if (itemBackground1 == DefaultValues.itemBackground1) {
-            ln_AddNote.setBackgroundColor(getResources().getColor(R.color.backGroundItem1));
+            lnAddNote.setBackgroundColor(getResources().getColor(R.color.backGroundItem1));
             colorBackground = itemBackground1;
         } else if (itemBackground1 == DefaultValues.itemBackground2) {
-            ln_AddNote.setBackgroundColor(getResources().getColor(R.color.backGroundItem2));
+            lnAddNote.setBackgroundColor(getResources().getColor(R.color.backGroundItem2));
             colorBackground = itemBackground1;
         } else if (itemBackground1 == DefaultValues.itemBackground3) {
-            ln_AddNote.setBackgroundColor(getResources().getColor(R.color.backGroundItem3));
+            lnAddNote.setBackgroundColor(getResources().getColor(R.color.backGroundItem3));
             colorBackground = itemBackground1;
         } else if (itemBackground1 == DefaultValues.itemBackground4) {
-            ln_AddNote.setBackgroundColor(getResources().getColor(R.color.backGroundItem4));
+            lnAddNote.setBackgroundColor(getResources().getColor(R.color.backGroundItem4));
             colorBackground = itemBackground1;
         }
     }
@@ -456,18 +453,18 @@ public class AddNoteActivity extends AppCompatActivity {
 
     //Set ImageRecyvlerView
     private void setRecylerviewImage() {
-        rv_ImageNote.setHasFixedSize(true);
+        rvImageNote.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        rv_ImageNote.setLayoutManager(layoutManager);
+        rvImageNote.setLayoutManager(layoutManager);
         imageAdapter = new ImageAdapter(listImage, getApplicationContext());
-        rv_ImageNote.setAdapter(imageAdapter);
+        rvImageNote.setAdapter(imageAdapter);
 
     }
 
     //Hàm thêm note mới vào sqlite
     private void addNewNote() {
-        conttent = et_Conttent.getText().toString();
-        tittle = et_Tittle.getText().toString();
+        conttent = etConttent.getText().toString();
+        tittle = etTittle.getText().toString();
         if (tittle.isEmpty()) {
             Toast.makeText(this, "" + getResources().getString(R.string.loiTittleEmty), Toast.LENGTH_SHORT).show();
         } else if (conttent.isEmpty() == true) {

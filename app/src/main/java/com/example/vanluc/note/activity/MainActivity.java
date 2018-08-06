@@ -1,38 +1,25 @@
 package com.example.vanluc.note.activity;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.database.Cursor;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.vanluc.note.R;
 import com.example.vanluc.note.adapter.NoteAdapter;
 import com.example.vanluc.note.database.DatabaseManager;
-import com.example.vanluc.note.define.DefaultValues;
 import com.example.vanluc.note.model.Note;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static DatabaseManager databaseNote;
-    RecyclerView rv_Note;
+    RecyclerView rvNote;
     NoteAdapter noteAdapter;
     public static ArrayList<Note> noteList = new ArrayList<>();
 
@@ -54,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         createDatabase();
         createTableOnDatabase();
-        rv_Note = findViewById(R.id.rv_Note);
+        rvNote = findViewById(R.id.rv_Note);
     }
 
     //Tạo icon và tittle của actionbar
@@ -116,12 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 "FOREIGN KEY(IDNOTE) REFERENCES NOTE(ID))");
 
     }
-
-    private void insertDataTest() {
-        databaseNote.queryData("INSERT INTO NOTE VALUES (" +
-                "null,'LÀM MÃI ĐÉO XONG','Haizz','12-12','12/12/2018',null,null,1)");
-
-    }
+    
 
     //Lưu dữ liệu vào noteList
     private void getData() {
@@ -150,11 +132,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Khởi tạo recyclerview
     private void initRecyclerView() {
-        rv_Note.setHasFixedSize(true);
+        rvNote.setHasFixedSize(true);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-        rv_Note.setLayoutManager(layoutManager);
+        rvNote.setLayoutManager(layoutManager);
         noteAdapter = new NoteAdapter(noteList, getApplicationContext());
-        rv_Note.setAdapter(noteAdapter);
+        rvNote.setAdapter(noteAdapter);
     }
 
 
