@@ -38,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         getData();
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getData();
+    }
+
     private void initView() {
         createDatabase();
         createTableOnDatabase();
@@ -103,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 "FOREIGN KEY(IDNOTE) REFERENCES NOTE(ID))");
 
     }
-    
+
 
     //Lưu dữ liệu vào noteList
     private void getData() {
@@ -138,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
         noteAdapter = new NoteAdapter(noteList, getApplicationContext());
         rvNote.setAdapter(noteAdapter);
     }
-
 
 
 }

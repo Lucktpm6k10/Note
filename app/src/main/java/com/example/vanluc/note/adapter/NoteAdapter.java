@@ -64,8 +64,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
         }
         //Set ẩn hiện icon clock
-        if (noteList.get(position).getClockTime().equals("null") == false) {
-            holder.iv_Clock.setVisibility(View.VISIBLE);
+        if (noteList.get(position)!= null) {
+            if (noteList.get(position).getClockTime().equals("null") == false) {
+                holder.iv_Clock.setVisibility(View.VISIBLE);
+            }
         }
 
     }

@@ -37,4 +37,5 @@ public class DatabaseManager extends SQLiteOpenHelper{
         SQLiteDatabase database = getWritableDatabase();
         return database.rawQuery(sql,null);
     }
+
 }

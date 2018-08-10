@@ -343,6 +343,7 @@ public class EditNoteActivity extends AppCompatActivity {
         bundle.putInt(NoteAdapter.idBundle, position);
         intent.putExtra(NoteAdapter.checkID, bundle);
         startActivity(intent);
+        this.finish();
     }
 
     //Tiến một note
@@ -357,6 +358,7 @@ public class EditNoteActivity extends AppCompatActivity {
         bundle.putInt(NoteAdapter.idBundle, position);
         intent.putExtra(NoteAdapter.checkID, bundle);
         startActivity(intent);
+        this.finish();
     }
 
     //Mở activity thêm note mới

@@ -48,6 +48,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class AddNoteActivity extends AppCompatActivity {
+    public static String keyString = "KeyString";
     TextView tvNowDate, tvNowTime, tvArlam;
     EditText etTittle, etConttent;
     LinearLayout lnAddNote;
@@ -55,7 +56,7 @@ public class AddNoteActivity extends AppCompatActivity {
     ImageButton ibCloseClock;
     RecyclerView rvImageNote;
     ImageAdapter imageAdapter;
-    public static Integer idNew;
+    Integer idNew;
 
     //Dialog
     Dialog dig_Camera, dig_Color, dig_DatePicker, dig_TimePicker;
@@ -148,6 +149,7 @@ public class AddNoteActivity extends AppCompatActivity {
     //Xử lý spiner
     private void setSpiner() {
         //Xử lý spinner date
+        listChooseDate.clear();
         dateAdapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item,
                 listChooseDate);
@@ -158,6 +160,7 @@ public class AddNoteActivity extends AppCompatActivity {
         spnDate.setAdapter(dateAdapter);
 
         //Xử lý spinner time
+        listChooseTime.clear();
         timeAdapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item,
                 listChooseTime);
@@ -488,20 +491,16 @@ public class AddNoteActivity extends AppCompatActivity {
             }
             if (dateClock != null || timeClock != null) {
                 long alarm = ConvertToMilis.covertMilis(dateClock, timeClock);
-                /*long now = ConvertToMilis.covertMilis(dateNow, timeNow);
-                long timeAlarm = alarm - now;*/
                 alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-                Intent intent = new Intent(AddNoteActivity.this, AlarmRecevier.class);
-                musicIntent = PendingIntent.getBroadcast(AddNoteActivity.this, 0,
-                        intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
+                Intent intent = new Intent(getApplicationContext(), AlarmRecevier.class);
+                intent.putExtra(keyString,idNew);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 //Alarm là  ngày và giờ  báo thức parse sang millisecond
-                alarmManager.set(AlarmManager.RTC_WAKEUP, alarm ,musicIntent);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, alarm ,pendingIntent);
                 Log.e("Time",""+alarm);
 
             }
-            Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
-            startActivity(intent);
+            this.finish();
 
         }
     }
